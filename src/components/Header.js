@@ -1,10 +1,11 @@
 import React from "react";
-// import ticketsImage from "./../img/tickets.png";
+import coffeeImage from "./../img/coffee-beans.webp";
 
 function Header() {
   return (
     <React.Fragment>
-      {/* <img src={ticketsImage} alt="tickets" /> */}
+      <h1>Coffee house</h1>;
+      <img src={coffeeImage} alt="coffee falling from sack" />
     </React.Fragment>
   );
 }

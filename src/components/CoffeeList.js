@@ -3,7 +3,6 @@ import Coffee from "./Coffee";
 import PropTypes from "prop-types";
 
 function CoffeeList(props) {
-  // Add props as parameter.
   return (
     <React.Fragment>
       <hr />
