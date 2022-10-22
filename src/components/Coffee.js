@@ -1,30 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
-
-const mainCoffeeList = [
-  {
-    nameOfCoffee: "Arabica",
-    origin: "Ethiopia ",
-    price: 5,
-    roast: " medium",
-    quantity: 130,
-  },
-  {
-    nameOfCoffee: "Robusta",
-    origin: "West Africa",
-    price: 9,
-    roast: " dark",
-    quantity: 130,
-  },
-];
 function Coffee(props) {
   return (
     <React.Fragment>
-      <h3>
-        {props.nameOfCoffee} - {props.origin} - {props.price} - {props.roast}
-        {props.quantity}
-      </h3>
-      <hr />
+      <div onClick={() => props.whenCoffeeClicked(props.id)}>
+        <h3>
+          {props.nameOfCoffee} - {props.origin} - {props.price} - {props.roast}
+          {props.quantity}
+        </h3>
+        <hr />
+      </div>
     </React.Fragment>
   );
 }
@@ -35,5 +20,7 @@ Coffee.propTypes = {
   price: PropTypes.number,
   roast: PropTypes.string,
   quantity: PropTypes.number,
+  id: PropTypes.string,
+  whenCoffeeClicked: PropTypes.func,
 };
 export default Coffee;

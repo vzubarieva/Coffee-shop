@@ -8,9 +8,9 @@ function NewCoffeeForm(props) {
     props.onNewCoffeeCreation({
       nameOfCoffee: event.target.nameOfCoffee.value,
       origin: event.target.origin.value,
-      price: event.target.price.value,
+      price: parseInt(event.target.price.value),
       roast: event.target.roast.value,
-      quantity: event.target.quantity.value,
+      quantity: parseInt(event.target.quantity.value),
       id: v4(),
     });
   }
@@ -34,6 +34,6 @@ function NewCoffeeForm(props) {
 }
 
 NewCoffeeForm.propTypes = {
-  onNewTicketCreation: PropTypes.func,
+  onNewCoffeeCreation: PropTypes.func,
 };
 export default NewCoffeeForm;
