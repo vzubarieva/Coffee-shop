@@ -29,6 +29,7 @@ class CoffeeControl extends React.Component {
       ],
       selectedCoffee: null,
       editing: false,
+      selling: false,
     };
     this.handleClick = this.handleClick.bind(this);
   }
@@ -78,6 +79,21 @@ class CoffeeControl extends React.Component {
     });
   };
 
+  handleSellClick = () => {
+    console.log("handleSellClick reached!");
+    this.setState({ editing: true });
+  };
+  handleSellingCoffeeInList = (coffeeToSell) => {
+    const editedMainCoffeeList = this.state.mainCoffeeList
+      .filter((coffee) => coffee.id !== this.state.selectedCoffee.id)
+      .concat(coffeeToSell);
+    this.setState({
+      mainCoffeeList: editedMainCoffeeList,
+      editing: false,
+      selectedCoffee: null,
+    });
+  };
+
   render() {
     let currentlyVisibleState = null;
     let buttonText = null;
@@ -87,6 +103,7 @@ class CoffeeControl extends React.Component {
         <EditCoffeeForm
           coffee={this.state.selectedCoffee}
           onEditCoffee={this.handleEditingCoffeeInList}
+          onSellCoffee={this.handleSellingCoffeeInList}
         />
       );
       buttonText = "Return to coffee list";

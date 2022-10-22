@@ -3,14 +3,15 @@ import PropTypes from "prop-types";
 function Coffee(props) {
   return (
     <React.Fragment>
-      <div onClick={() => props.whenCoffeeClicked(props.id)}>
-        <h3>
-          {props.nameOfCoffee} - {props.origin} - {props.price} - {props.roast}
-          {props.quantity}
-        </h3>
-        button
-        <hr />
-      </div>
+      <h3>
+        {props.nameOfCoffee} - {props.origin} - {props.price} - {props.roast}
+        {props.quantity}
+      </h3>
+      <button onClick={() => props.whenCoffeeClicked(props.id)}>
+        View details
+      </button>
+      {/* <button onClick={() => props.whenCoffeeSold(props.id)} */}
+      <button onClick={props.onClickingSold}>Sell</button> <hr />
     </React.Fragment>
   );
 }
@@ -23,5 +24,6 @@ Coffee.propTypes = {
   quantity: PropTypes.number,
   id: PropTypes.string,
   whenCoffeeClicked: PropTypes.func,
+  onClickingSold: PropTypes.func,
 };
 export default Coffee;
