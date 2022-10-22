@@ -1,32 +1,34 @@
 import React from "react";
-import PropTypes from "prop-types";
 import ReusableForm from "./ReusableForm";
-import { v4 } from "uuid";
+import PropTypes from "prop-types";
 
-function NewCoffeeForm(props) {
-  function handleNewCoffeeFormSubmission(event) {
+function EditCoffeeForm(props) {
+  const { coffee } = props;
+
+  function handleEditCoffeeFormSubmission(event) {
     event.preventDefault();
-    props.onNewCoffeeCreation({
+    props.onEditCoffee({
       nameOfCoffee: event.target.nameOfCoffee.value,
       origin: event.target.origin.value,
       price: parseInt(event.target.price.value),
       roast: event.target.roast.value,
       quantity: parseInt(event.target.quantity.value),
-      id: v4(),
+      id: coffee.id,
     });
   }
 
   return (
     <React.Fragment>
       <ReusableForm
-        onSubmit={handleNewCoffeeFormSubmission}
-        buttonText="Add new coffee type"
+        onSubmit={handleEditCoffeeFormSubmission}
+        buttonText="Update coffee type"
       />
     </React.Fragment>
   );
 }
 
-NewCoffeeForm.propTypes = {
-  onNewCoffeeCreation: PropTypes.func,
+EditCoffeeForm.propTypes = {
+  coffee: PropTypes.object,
+  onEditCoffee: PropTypes.func,
 };
-export default NewCoffeeForm;
+export default EditCoffeeForm;

@@ -8,6 +8,7 @@ function Coffee(props) {
           {props.nameOfCoffee} - {props.origin} - {props.price} - {props.roast}
           {props.quantity}
         </h3>
+        button
         <hr />
       </div>
     </React.Fragment>

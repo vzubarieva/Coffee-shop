@@ -12,11 +12,13 @@ function CoffeeDetail(props) {
         {coffee.quantity}
       </h3>
       <hr />
+      <button onClick={props.onClickingEdit}>Update Coffee Type</button>{" "}
     </React.Fragment>
   );
 }
 
 CoffeeDetail.propTypes = {
   coffee: PropTypes.object,
+  onClickingEdit: PropTypes.func,
 };
 export default CoffeeDetail;

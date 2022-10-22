@@ -2,6 +2,7 @@ import React from "react";
 import NewCoffeeForm from "./NewCoffeeForm";
 import CoffeeList from "./CoffeeList";
 import CoffeeDetail from "./CoffeeDetail";
+import EditCoffeeForm from "./EditCoffeeForm";
 
 class CoffeeControl extends React.Component {
   constructor(props) {
@@ -27,6 +28,7 @@ class CoffeeControl extends React.Component {
         },
       ],
       selectedCoffee: null,
+      editing: false,
     };
     this.handleClick = this.handleClick.bind(this);
   }
@@ -36,6 +38,7 @@ class CoffeeControl extends React.Component {
       this.setState({
         formVisibleOnPage: false,
         selectedCoffee: null,
+        editing: false,
       });
     } else {
       this.setState((prevState) => ({
@@ -59,12 +62,40 @@ class CoffeeControl extends React.Component {
     this.setState({ selectedCoffee: selectedCoffee });
   };
 
+  handleEditClick = () => {
+    console.log("handleEditClick reached!");
+    this.setState({ editing: true });
+  };
+
+  handleEditingCoffeeInList = (coffeeToEdit) => {
+    const editedMainCoffeeList = this.state.mainCoffeeList
+      .filter((coffee) => coffee.id !== this.state.selectedCoffee.id)
+      .concat(coffeeToEdit);
+    this.setState({
+      mainCoffeeList: editedMainCoffeeList,
+      editing: false,
+      selectedCoffee: null,
+    });
+  };
+
   render() {
     let currentlyVisibleState = null;
     let buttonText = null;
-    if (this.state.selectedCoffee != null) {
+
+    if (this.state.editing) {
       currentlyVisibleState = (
-        <CoffeeDetail coffee={this.state.selectedCoffee} />
+        <EditCoffeeForm
+          coffee={this.state.selectedCoffee}
+          onEditCoffee={this.handleEditingCoffeeInList}
+        />
+      );
+      buttonText = "Return to coffee list";
+    } else if (this.state.selectedCoffee != null) {
+      currentlyVisibleState = (
+        <CoffeeDetail
+          coffee={this.state.selectedCoffee}
+          onClickingEdit={this.handleEditClick}
+        />
       );
       buttonText = "Return to coffee List";
     } else if (this.state.formVisibleOnPage) {
