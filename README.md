@@ -11,7 +11,7 @@
 
 ## Description
 
-![project-screenshot](src\img\diagram.png)
+![project-screenshot](src/img/diagram.png)
 
 ## Setup/Installation Requirements
 
