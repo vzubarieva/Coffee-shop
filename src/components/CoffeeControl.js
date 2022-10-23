@@ -84,21 +84,26 @@ class CoffeeControl extends React.Component {
       (coffee) => coffee.id === id
     );
     const coffeeObj = this.state.mainCoffeeList[coffeeObjIndex];
-    const newCoffeeObj = {
-      ...coffeeObj,
-      quantity: coffeeObj.quantity - 1,
-    };
-    const editedMainCoffeeList = [...this.state.mainCoffeeList];
-    editedMainCoffeeList.splice(coffeeObjIndex, 1, newCoffeeObj);
-    console.log("editedMainCoffeeList: ", editedMainCoffeeList);
-    // find coffee obj by id in that list
-    // get list of coffee other than our id
-    // decrement quantity on coffee obj
-    // concat filtered list with modified obj
-    // set filtered list into state
-    this.setState({
-      mainCoffeeList: editedMainCoffeeList,
-    });
+    let decrementingAmount = coffeeObj.quantity - 1;
+    if (decrementingAmount >= 0) {
+      const newCoffeeObj = {
+        ...coffeeObj,
+        quantity: coffeeObj.quantity - 1,
+      };
+      const editedMainCoffeeList = [...this.state.mainCoffeeList];
+      editedMainCoffeeList.splice(coffeeObjIndex, 1, newCoffeeObj);
+      console.log("editedMainCoffeeList: ", editedMainCoffeeList);
+      // find coffee obj by id in that list
+      // get list of coffee other than our id
+      // decrement quantity on coffee obj
+      // concat filtered list with modified obj
+      // set filtered list into state
+      this.setState({
+        mainCoffeeList: editedMainCoffeeList,
+      });
+    } else {
+      alert("Out of stock!");
+    }
   };
 
   render() {
