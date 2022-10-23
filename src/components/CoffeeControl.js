@@ -29,7 +29,6 @@ class CoffeeControl extends React.Component {
       ],
       selectedCoffee: null,
       editing: false,
-      selling: false,
     };
     this.handleClick = this.handleClick.bind(this);
   }
@@ -79,18 +78,26 @@ class CoffeeControl extends React.Component {
     });
   };
 
-  handleSellClick = () => {
-    console.log("handleSellClick reached!");
-    this.setState({ editing: true });
-  };
-  handleSellingCoffeeInList = (coffeeToSell) => {
-    const editedMainCoffeeList = this.state.mainCoffeeList
-      .filter((coffee) => coffee.id !== this.state.selectedCoffee.id)
-      .concat(coffeeToSell);
+  handleSellingCoffeeInList = (id) => {
+    const coffeeObj = this.state.mainCoffeeList.find(
+      (coffee) => coffee.id === id
+    );
+    const otherPropertiesOfCoffee = this.state.mainCoffeeList.filter(
+      (coffee) => coffee.id !== id
+    );
+    const newCoffeeObj = {
+      ...coffeeObj,
+      quantity: coffeeObj.quantity - 1,
+    };
+    const editedMainCoffeeList = otherPropertiesOfCoffee.concat(newCoffeeObj);
+    console.log("editedMainCoffeeList: ", editedMainCoffeeList);
+    // find coffee obj by id in that list
+    // get list of coffee other than our id
+    // decrement quantity on coffee obj
+    // concat filtered list with modified obj
+    // set filtered list into state
     this.setState({
       mainCoffeeList: editedMainCoffeeList,
-      editing: false,
-      selectedCoffee: null,
     });
   };
 
@@ -103,7 +110,6 @@ class CoffeeControl extends React.Component {
         <EditCoffeeForm
           coffee={this.state.selectedCoffee}
           onEditCoffee={this.handleEditingCoffeeInList}
-          onSellCoffee={this.handleSellingCoffeeInList}
         />
       );
       buttonText = "Return to coffee list";
@@ -125,6 +131,7 @@ class CoffeeControl extends React.Component {
         <CoffeeList
           coffeeList={this.state.mainCoffeeList}
           onCoffeeSelection={this.handleChangingSelectedCoffee}
+          onSellCoffee={this.handleSellingCoffeeInList}
         />
       );
       buttonText = "Add Coffee";

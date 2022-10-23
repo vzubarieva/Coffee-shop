@@ -10,8 +10,8 @@ function Coffee(props) {
       <button onClick={() => props.whenCoffeeClicked(props.id)}>
         View details
       </button>
-      {/* <button onClick={() => props.whenCoffeeSold(props.id)} */}
-      <button onClick={props.onClickingSold}>Sell</button> <hr />
+      <button onClick={() => props.onClickingSold(props.id)}>Sold</button>{" "}
+      <hr />
     </React.Fragment>
   );
 }

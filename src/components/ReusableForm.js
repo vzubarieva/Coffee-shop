@@ -7,12 +7,14 @@ function ReusableForm(props) {
       <form onSubmit={props.onSubmit}>
         <input type="text" name="nameOfCoffee" placeholder="Coffee name" />
         <input type="text" name="origin" placeholder="Origin" />
-        <input type="number" name="price" placeholder="$" />
+        <input type="number" name="price" placeholder="$" min="0" />
         <input type="text" name="roast" placeholder="Roast" />
         <input
           type="number"
           name="quantity"
           placeholder="Quantity in burlap sack"
+          min="0"
+          max="130"
         />
         <button type="submit">{props.buttonText}</button>
       </form>
