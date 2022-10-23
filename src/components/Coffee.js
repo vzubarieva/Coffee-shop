@@ -1,18 +1,37 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Button, TableCell, TableRow } from "@mui/material";
+import { Stack } from "@mui/system";
 function Coffee(props) {
   return (
-    <React.Fragment>
-      <h3>
-        {props.nameOfCoffee} - {props.origin} - {props.price} - {props.roast}
-        {props.quantity}
-      </h3>
-      <button onClick={() => props.whenCoffeeClicked(props.id)}>
-        View details
-      </button>
-      <button onClick={() => props.onClickingSold(props.id)}>Sold</button>{" "}
-      <hr />
-    </React.Fragment>
+    <TableRow
+      key={props.id}
+      sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+    >
+      <TableCell component="th" scope="row">
+        {props.nameOfCoffee}
+      </TableCell>
+      <TableCell>{props.origin}</TableCell>
+      <TableCell>{props.roast}</TableCell>
+      <TableCell align="right">{props.price}</TableCell>
+      <TableCell align="right">{props.quantity}</TableCell>
+      <TableCell>
+        <Stack direction={"row"} spacing={2}>
+          <Button
+            variant="outlined"
+            onClick={() => props.whenCoffeeClicked(props.id)}
+          >
+            View details
+          </Button>
+          <Button
+            variant="outlined"
+            onClick={() => props.onClickingSold(props.id)}
+          >
+            Sold
+          </Button>
+        </Stack>
+      </TableCell>
+    </TableRow>
   );
 }
 

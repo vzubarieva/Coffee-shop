@@ -1,19 +1,36 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  Typography,
+} from "@mui/material";
 
 function CoffeeDetail(props) {
   const { coffee } = props;
 
   return (
-    <React.Fragment>
-      <h1>Coffee type details</h1>
-      <h3>
-        {coffee.nameOfCoffee} - {coffee.origin} - {coffee.price} -{coffee.roast}
-        {coffee.quantity}
-      </h3>
-      <hr />
-      <button onClick={props.onClickingEdit}>Update Coffee Type</button>{" "}
-    </React.Fragment>
+    <Card>
+      <CardContent>
+        <Typography color="text.secondary" gutterBottom>
+          Coffee type details
+        </Typography>
+        <Typography variant="h5" component="div">
+          {coffee.nameOfCoffee}
+        </Typography>
+        <Typography>{coffee.origin}</Typography>
+        <Typography>{coffee.roast}</Typography>
+        <Typography>{coffee.price}</Typography>
+        <Typography>{coffee.quantity}</Typography>
+      </CardContent>
+      <CardActions>
+        <Button size="small" variant="outlined" onClick={props.onClickingEdit}>
+          Update Coffee Type
+        </Button>
+      </CardActions>
+    </Card>
   );
 }
 

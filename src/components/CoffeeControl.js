@@ -3,6 +3,7 @@ import NewCoffeeForm from "./NewCoffeeForm";
 import CoffeeList from "./CoffeeList";
 import CoffeeDetail from "./CoffeeDetail";
 import EditCoffeeForm from "./EditCoffeeForm";
+import { Button, Stack } from "@mui/material";
 
 class CoffeeControl extends React.Component {
   constructor(props) {
@@ -137,10 +138,16 @@ class CoffeeControl extends React.Component {
       buttonText = "Add Coffee";
     }
     return (
-      <React.Fragment>
+      <Stack spacing={2}>
         {currentlyVisibleState}
-        <button onClick={this.handleClick}>{buttonText}</button>
-      </React.Fragment>
+        <Button
+          variant="contained"
+          sx={{ width: 250 }}
+          onClick={this.handleClick}
+        >
+          {buttonText}
+        </Button>
+      </Stack>
     );
   }
 }
