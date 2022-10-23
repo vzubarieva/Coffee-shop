@@ -1,4 +1,4 @@
-import { AppBar, Toolbar, Typography } from "@mui/material";
+import { AppBar, Container, Toolbar, Typography } from "@mui/material";
 import React from "react";
 import coffeeImage from "./../img/coffee-beans.webp";
 
@@ -6,11 +6,13 @@ function Header() {
   return (
     <>
       <AppBar position="static">
-        <Toolbar>
-          <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
-            Coffee house
-          </Typography>
-        </Toolbar>
+        <Container fixed>
+          <Toolbar>
+            <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
+              Coffee house
+            </Typography>
+          </Toolbar>
+        </Container>
       </AppBar>
       <img
         src={coffeeImage}

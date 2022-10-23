@@ -80,17 +80,16 @@ class CoffeeControl extends React.Component {
   };
 
   handleSellingCoffeeInList = (id) => {
-    const coffeeObj = this.state.mainCoffeeList.find(
+    const coffeeObjIndex = this.state.mainCoffeeList.findIndex(
       (coffee) => coffee.id === id
     );
-    const otherPropertiesOfCoffee = this.state.mainCoffeeList.filter(
-      (coffee) => coffee.id !== id
-    );
+    const coffeeObj = this.state.mainCoffeeList[coffeeObjIndex];
     const newCoffeeObj = {
       ...coffeeObj,
       quantity: coffeeObj.quantity - 1,
     };
-    const editedMainCoffeeList = otherPropertiesOfCoffee.concat(newCoffeeObj);
+    const editedMainCoffeeList = [...this.state.mainCoffeeList];
+    editedMainCoffeeList.splice(coffeeObjIndex, 1, newCoffeeObj);
     console.log("editedMainCoffeeList: ", editedMainCoffeeList);
     // find coffee obj by id in that list
     // get list of coffee other than our id
