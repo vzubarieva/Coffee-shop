@@ -15,7 +15,7 @@ As a user, I want to see how many pounds of coffee beans are left in a burlap sa
 As a user, I want to be able to click a button to sell a pound of coffee beans. This should decrease the number of pounds left by 1. The number of pounds in a sack of coffee beans should not be able to go below 0.
 
 ![project-screenshot](src/img/diagram.png)
-![project-screenshot](src/img/Screenshot.png)
+![project-screenshot](src/img/Screenshot1.png)
 
 ## Technologies Used
 
