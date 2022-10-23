@@ -139,7 +139,7 @@ class CoffeeControl extends React.Component {
           onSellCoffee={this.handleSellingCoffeeInList}
         />
       );
-      buttonText = "Add Coffee";
+      buttonText = "Add coffee beans";
     }
     return (
       <Stack spacing={2}>
